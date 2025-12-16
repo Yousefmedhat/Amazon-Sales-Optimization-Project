@@ -2,7 +2,7 @@
 
 ## **Introduction**
 This project was developed for the **Data Analysis Algorithms** course at **Helwan National University**.  
-This is a team project. Refer to [Credits](#credits)[^.].
+This is a team project. Refer to [Credits](#credits).
 ##  **Problem Definition**
 Amazon is one of the largest e-commerce platforms globally, our objective is to analyze Amazon sales dataset and provide useful information about **sales trends** and **customer behavior** in order to **maximize revenue**.
 
@@ -93,39 +93,41 @@ Proceed to the [**Full notebook**](https://colab.research.google.com/drive/1Ww31
 - Column Additions and Deletions
   - Created new column `discount` that represents the discount percentage for products.
   - Created new column `category` to split products into **15 categories** based on keywords in the product title.
-  - Created new columns `OrderYear`,`OrderMonth`,`OrderDayOfWeek` derived from **delivery_details**.
+  - Created new columns `OrderMonth`,`OrderDayOfWeek` derived from **delivery_details**.
   - Dropped **current\discounted price** and **price_on_variant**, as **listed_price** and discount are sufficient.
   - Dropped **sustainability_badges** since `nan > 90%`.
   - Dropped **image_url** and **product_url**.
 
-  - Column Renaming:
-    
-
-
-
-
-
-
-
-
+- Column Renaming:
+  - | | title | rating | number_of_reviews | bought_in_last_month | listed_price | buy_box_availability |  
+  |--|:-:|:-:|:-:|:-:|:-:|:-:|  
+  |New name| product_title | product_rating | total_reviews | purchased_last_month | price| is_available | 
+  
 
 
 
 
 ### **Exploratory Data Analysis [EDA]**
 - We performed univariate and multivariate analyses to gain insights.
-- Used `matplotlib` and `seaborn` to make informative visualizations.ol
-- 
+- Used `matplotlib` and `seaborn` to make informative visualizations.
+- Examples of visualizations:   
+  - <img src="Images/Top-10-rating.jpg" alt="Top 10 Categories by product rating">
+  - <img src="Images/Top-5-is-sponsored.jpg" alt="Top 5 Categories by is_sponsored">
+   - <img src="Images/univariate-histotram.jpg" alt="Univariate Histogram">
+   - <img src="Images/univariate-boxblt.jpg" alt="Univariate boxblot">
+
 ### **Feature Engineering & Selection**
+
 ### **Hypothesis Testing**
+
 ### **Dimensionality Reduction**
 
-## Credits
+## **Credits**
 [**`Yousef Medhat`**](https://www.linkedin.com/in/yousef-medhat-7293232a1/)  
 [**`Yousef Waheed`**](https://www.linkedin.com/in/youssef-waheed-8462061a7/)  
 [**`Ali Abdou`**](https://www.linkedin.com/in/ali-abdouu/)  
-[**`Amira Azzam`**](https://www.linkedin.com/in/yousef-medhat-7293232a1/)  
+[**`Amira Azzam`**](https://www.linkedin.com/in/amira-azzam2510/)  
 [**`Maria Gerges`**](https://www.linkedin.com/in/maria-gerges-81b04a30a/)
-[^.]: d
+
 ## **License**
 This project is open source and available under the [MIT License](https://mit-license.org/).
