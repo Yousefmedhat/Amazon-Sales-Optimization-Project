@@ -191,9 +191,11 @@ Proceed to the [**Full notebook**](Amazon_Sales_Optimization.ipynb) to see the i
 ### **Dimensionality Reduction**  
   - Used **`PCA`** to reduce dimensionality and capture the main patterns in the data:
     - Applied **StandardScaler** to normalize features (mean = 0, variance = 1):  
+
     <img src="Images/standard-scaling.webp" width=60% alt="Standard Scaling">
 
     - Applied **RobustScaler** to handle outliers (centered using median, scaled by IQR):  
+    
     <img src="Images/robust-scaling.webp" width=60% alt="robust Scaling">
 
 ### **GUI**
