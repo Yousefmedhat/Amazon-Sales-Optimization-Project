@@ -1,8 +1,28 @@
 # **E-commerce Sales Optimization Project**
 
 ## **Introduction**
-This project was developed for the **Data Analysis Algorithms** course at **Helwan National University**.  
-This is a team project. Refer to [Credits](#credits).
+This project was developed for the **Data Analysis Algorithms** course at **Helwan National University**.   
+_This is a team project. Refer to [Credits](#credits)._
+
+## **For Local Run**
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/Yousefmedhat/Amazon-Sales-Optimization-Project.git  
+cd Amazon-Sales-Optimization-Project
+```
+### 2. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+### 3. Open the notebook
+
+Use an IDE that supports Jupyter notebooks (VS Code, Jupyter Notebook, or Google Colab):  
+
+- Open [`Amazon_Sales_Optimization.ipynb`](Amazon_Sales_Optimization.ipynb).
+
+- You can run the cells interactively to execute the project code.
+
 ##  **Problem Definition**
 Amazon is one of the largest e-commerce platforms globally, our objective is to analyze Amazon sales dataset and provide useful information about **sales trends** and **customer behavior** in order to **maximize revenue**.
 
@@ -51,7 +71,7 @@ selection methods (filter, Lasso, RFE).
 
 ## **Technical Approach**
 The following section discusses the technical implementation of the required objectives with details and the tools used to address them.  
-Proceed to the [**Full notebook**](https://colab.research.google.com/drive/1Ww31zrvAM92Hng-qRkJR8PCQFcZjnyat?usp=sharing) to see the implementation.
+Proceed to the [**Full notebook**](Amazon_Sales_Optimization.ipynb) to see the implementation.
 #### **Tools:**
 - **Google Colab** ⟶ Used to write code in `.ipynb` format that can be accessed and edited by the team.
 - **Python Libraries** ⟶ Used libraries like `pandas`, `matplotlib`, `seaborn` to handle, analyze and visualze the data.
@@ -90,19 +110,19 @@ Proceed to the [**Full notebook**](https://colab.research.google.com/drive/1Ww31
   - Filled missing values in delivery_details with the value in the previous row using `ffill`.
   - Filled missing values in **buy_box_availability** with "not available".
 
-- Column Additions and Deletions
+- Column Additions and Deletions:
   - Created new column `discount` that represents the discount percentage for products.
   - Created new column `category` to split products into **15 categories** based on keywords in the product title.
   - Created new columns `OrderMonth`,`OrderDayOfWeek` derived from **delivery_details**.
   - Dropped **current\discounted price** and **price_on_variant**, as **listed_price** and discount are sufficient.
-  - Dropped **sustainability_badges** since `nan > 90%`.
+  - Dropped **sustainability_badges** since $nan > 90%$.
   - Dropped **image_url** and **product_url**.
 
+
 - Column Renaming:
-  - | | title | rating | number_of_reviews | bought_in_last_month | listed_price | buy_box_availability |  
-  |--|:-:|:-:|:-:|:-:|:-:|:-:|  
-  |New name| product_title | product_rating | total_reviews | purchased_last_month | price| is_available | 
-  
+  - |        | title         | rating            |    number_of_reviews | bought_in_last_month | listed_price | is_best_seller| buy_box_availability |  
+    |--------|:-------------:|:-----------------:|:--------------------:|:--------------------:|:------------:|:--------------------:|  :--: |
+    |New name| product_title | product_rating    | total_reviews        | purchased_last_month | price        |  badge    |is_available | 
 
 
 
@@ -110,17 +130,77 @@ Proceed to the [**Full notebook**](https://colab.research.google.com/drive/1Ww31
 ### **Exploratory Data Analysis [EDA]**
 - We performed univariate and multivariate analyses to gain insights.
 - Used `matplotlib` and `seaborn` to make informative visualizations.
-- Examples of visualizations:   
-  - <img src="Images/Top-10-rating.jpg" alt="Top 10 Categories by product rating">
-  - <img src="Images/Top-5-is-sponsored.jpg" alt="Top 5 Categories by is_sponsored">
-   - <img src="Images/univariate-histotram.jpg" alt="Univariate Histogram">
-   - <img src="Images/univariate-boxblt.jpg" alt="Univariate boxblot">
+- Examples of visualizations:
+    
+  - <img src="Images/Top-10-rating.jpg" alt="Top 10 Categories by product rating" width = 60%>  
+
+  > Used **`barplot`** to show the most rated categories.
+
+  - <img src="Images/Top-5-is-sponsored.jpg" alt="Top 5 Categories by is_sponsored" width = 70%>
+
+  > Used **`barplot`** to compare raitings between **organic** and **sponsored** in the top 5 categories by rating.
+
+   - <img src="Images/univariate-histotram.jpg" alt="Univariate Histogram" width = 60%>
+
+   > Used **`histogram`** to show the distribution of numeric features.
+
+   - <img src="Images/univariate-boxblt.jpg" alt="Univariate boxblot" width = 60%>
+
+   > Used `boxblot` to show the the **skewness** and **outliers** of numeric features.
+
+   - <img src="Images/heatmap.png" alt="Heatmap" width = 70%>
+
+   > Used `heatmap` to show **correlation** between features.
 
 ### **Feature Engineering & Selection**
+  - Handled outliers and skewness:
+
+    - Used **IQR** method to numeric features to remove outliers.  
+
+      <img src="Images/univariate-boxblot-IQR.jpg" alt="Univariate boxplot after IQR" width=60%>  
+
+     > Distribution after applying **IQR**.
+
+    - Applied **log transformation** to numeric features to normalize the data.
+      <img src="Images/univariate-boxblot-log.png" alt="Univariate boxplot after IQR" width=60%>   
+
+     > Distribution after applying **log transformation**.
+
+  - Feature encoding:
+    - Applied **`One Hot Encoding`** to **badge** column:
+      
+    | 	badge_Best Seller |	badge_Limited time deal | 	badge_No Badge | 	badge_Save |   
+    |------------------- | ----------------------- | ---------------- | ----------- | 
+
+    - Applied **`Binary Encoding`** to **is_sponsored** and **is_available**,
+    since they have 2 distinct values only.  
+    - Applied **`Frequency Encoding`** to other categorical features since they have high cardinality and no particular order.  
+  - Feature Selection:
+    - Applied **`Variance Treshold`** to remove low variace features.
+    - Applied **`CFS`** to remove highly-correlated features.
+    - Calculated **`Mutual Information`** to remove low-information features.
 
 ### **Hypothesis Testing**
+- Conducted hypothesis testing using the `T-Test`:
+  - $H_0$: Discounts do **not** have a significant effect on sales.  
+    > Rejected $H_0$ since $p < \text{threshold}$ ⟶ Discounts have a significant effect on sales.  
 
-### **Dimensionality Reduction**
+  - $H_0$: Sponsored products do **not** have significantly higher sales.  
+    > Rejected $H_0$ since $p < \text{threshold}$ ⟶ Sponsored products have significantly higher sales.
+    
+### **Dimensionality Reduction**  
+  - Used **`PCA`** to reduce dimensionality and capture the main patterns in the data:
+    - Applied **StandardScaler** to normalize features (mean = 0, variance = 1):  
+    <img src="Images/standard-scaling.webp" width=60% alt="Standard Scaling">
+
+    - Applied **RobustScaler** to handle outliers (centered using median, scaled by IQR):  
+    <img src="Images/robust-scaling.webp" width=60% alt="robust Scaling">
+
+### **GUI**
+- Check the the running GUI on [**`Gradio`**](https://3069be9da53628642f.gradio.live/) to get access to all the visualizations.
+- OR run the code locally and access the GUI section. Refer to [Local Run](#for-local-run).
+
+---
 
 ## **Credits**
 [**`Yousef Medhat`**](https://www.linkedin.com/in/yousef-medhat-7293232a1/)  
