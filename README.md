@@ -144,11 +144,11 @@ Proceed to the [**Full notebook**](Amazon_Sales_Optimization.ipynb) to see the i
 
    > Used **`histogram`** to show the distribution of numeric features.
 
-   - <img src="Images/univariate-boxblt.jpg" alt="Univariate boxblot" width = 60%>
+   - <img src="Images/univariate-boxblot.jpg" alt="Univariate boxblot" width = 60%>
 
    > Used `boxblot` to show the the **skewness** and **outliers** of numeric features.
 
-   - <img src="Images/heatmap.png" alt="Heatmap" width = 70%>
+   - <img src="Images/heatmap.png" alt="Heatmap" width = 60%>
 
    > Used `heatmap` to show **correlation** between features.
 
