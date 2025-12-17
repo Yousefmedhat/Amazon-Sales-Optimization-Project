@@ -35,7 +35,7 @@ Amazon is one of the largest e-commerce platforms globally, our objective is to 
 
 ### **Dataset Description**
 - The dataset provides detailed information on **42,000+** Amazon electronics products, including sales, ratings and pricing.
-- Raw, original data, with alot of missing values and inconsistent entries, which makes it ideal for preprocessing practice and feature engineering.   
+- Raw, original data, with a lot of missing values and inconsistent entries, which makes it ideal for practice preprocessing and feature engineering.   
 > [**Dataset on Kaggle**](https://www.kaggle.com/datasets/ikramshah512/amazon-products-sales-dataset-42k-items-2025?select=amazon_products_sales_data_uncleaned.csv)
 
 ##### **Features**:
@@ -92,7 +92,7 @@ Proceed to the [**Full notebook**](Amazon_Sales_Optimization.ipynb) to see the i
     | New format| 3044               | 2000	                    | 162.24                       | 159.00       |
 
 
-- Converted data types for columns:
+- Converted columns data types:
     - | | product_rating |  number_of_reviews| bought_in_last_month | current/discounted_price |  price_on_variant |  listed_price | delivery_details | collected_at|   
       | --|:---------------:|:-------------------:|:----------------------:| :---------------:|:---------------:|:---------------:| :----------------------: | :---------------:|
       Old datatype | object | object | object | object | object | object | object | object | 
@@ -111,7 +111,7 @@ Proceed to the [**Full notebook**](Amazon_Sales_Optimization.ipynb) to see the i
   - Filled missing values in **buy_box_availability** with "not available".
 
 - Column Additions and Deletions:
-  - Created new column `discount` that represents the discount percentage for products.
+  - Created new column `discount` that represents the discount percentage of products.
   - Created new column `category` to split products into **15 categories** based on keywords in the product title.
   - Created new columns `OrderMonth`,`OrderDayOfWeek` derived from **delivery_details**.
   - Dropped **current\discounted price** and **price_on_variant**, as **listed_price** and discount are sufficient.
@@ -146,7 +146,7 @@ Proceed to the [**Full notebook**](Amazon_Sales_Optimization.ipynb) to see the i
 
    - <img src="Images/univariate-boxblot.jpg" alt="Univariate boxblot" width = 60%>
 
-   > Used `boxblot` to show the the **skewness** and **outliers** of numeric features.
+   > Used `boxblot` to show the **skewness** and **outliers** of numeric features.
 
    - <img src="Images/heatmap.png" alt="Heatmap" width = 60%>
 
@@ -173,10 +173,10 @@ Proceed to the [**Full notebook**](Amazon_Sales_Optimization.ipynb) to see the i
     |------------------- | ----------------------- | ---------------- | ----------- | 
 
     - Applied **`Binary Encoding`** to **is_sponsored** and **is_available**,
-    since they have 2 distinct values only.  
+    since they have two distinct values only.  
     - Applied **`Frequency Encoding`** to other categorical features since they have high cardinality and no particular order.  
   - Feature Selection:
-    - Applied **`Variance Treshold`** to remove low variace features.
+    - Applied **`Variance Threshold`** to remove low variace features.
     - Applied **`CFS`** to remove highly-correlated features.
     - Calculated **`Mutual Information`** to remove low-information features.
 
