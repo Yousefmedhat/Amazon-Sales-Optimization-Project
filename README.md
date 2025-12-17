@@ -136,7 +136,7 @@ Proceed to the [**Full notebook**](Amazon_Sales_Optimization.ipynb) to see the i
 
   > Used **`barplot`** to show the most rated categories.
 
-  - <img src="Images/Top-5-is-sponsored.jpg" alt="Top 5 Categories by is_sponsored" width = 70%>
+  - <img src="Images/Top-5-is-sponsored.jpg" alt="Top 5 Categories by is_sponsored" width = 60%>
 
   > Used **`barplot`** to compare raitings between **organic** and **sponsored** in the top 5 categories by rating.
 
@@ -195,7 +195,7 @@ Proceed to the [**Full notebook**](Amazon_Sales_Optimization.ipynb) to see the i
     <img src="Images/standard-scaling.webp" width=60% alt="Standard Scaling">
 
     - Applied **RobustScaler** to handle outliers (centered using median, scaled by IQR):  
-    
+
     <img src="Images/robust-scaling.webp" width=60% alt="robust Scaling">
 
 ### **GUI**
